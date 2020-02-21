@@ -16,13 +16,13 @@ Mappings:
   # ranges to add more
   SubnetConfig:
     VPC:
-      CIDR: '10.0.0.0/16'
+      CIDR: '172.31.0.0/16'
     PublicOne:
-      CIDR: '10.0.32.0/20'
+      CIDR: '172.31.32.0/20'
     PublicTwo:
-      CIDR: '10.0.16.0/20'
+      CIDR: '172.31.16.0/20'
     PublicThree:
-      CIDR: '10.0.0.0/20'
+      CIDR: '172.31.0.0/20'
 Resources:
   # VPC in which containers will be networked.
   # It has two public subnets
