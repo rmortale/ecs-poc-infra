@@ -276,6 +276,16 @@ Outputs:
     Value: !Join ['', ['http://', !GetAtt 'PublicLoadBalancer.DNSName']]
     Export:
       Name: !Join [ ':', [ !Ref 'AWS::StackName', 'ExternalUrl' ] ]
+  ExternalDNSName:
+    Description: The DNSName of the external load balancer
+    Value: !GetAtt 'PublicLoadBalancer.DNSName'
+    Export:
+      Name: !Join [ ':', [ !Ref 'AWS::StackName', 'ExternalDNSName' ] ]
+  LBHostedZoneId:
+    Description: The zoneid of the external load balancer
+    Value: !GetAtt 'PublicLoadBalancer.CanonicalHostedZoneID'
+    Export:
+      Name: !Join [ ':', [ !Ref 'AWS::StackName', 'LBHostedZoneId' ] ]
   ECSRole:
     Description: The ARN of the ECS role
     Value: !GetAtt 'ECSRole.Arn'

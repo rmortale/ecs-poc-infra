@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Deploy a DNS record
+Parameters:
+    StackName:
+      Type: String
+      Default: production
+      Description: The name of the parent Fargate networking stack that you created. Necessary
+                   to locate and reference resources created by that stack.
+Resources:
+    DNSSingleRecord:
+        Type: "AWS::Route53::RecordSet"
+        Properties:
+            HostedZoneName: "dulce.ch."
+            Name: "service.dulce.ch."
+            Type: A
+            AliasTarget:
+                HostedZoneId:
+                    Fn::ImportValue:
+                        !Join [':', [!Ref 'StackName', 'LBHostedZoneId']]
+                DNSName:
+                    Fn::ImportValue:
+                        !Join [':', [!Ref 'StackName', 'ExternalDNSName']]
+           
+
